@@ -25,7 +25,7 @@ This repository contains well-organized Java programs created during my learning
 ### 💻 Projects
 - ATM Simulation
 - Movie Booking System
-- Vehicle Registration
+- Online Shopping System
 - Login/Authentication Demo
 > *(More coming soon!)*
 
