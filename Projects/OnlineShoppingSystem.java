@@ -98,7 +98,8 @@ public class OnlineShoppingSystem {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        // Getting product details via input
+        System.out.println("Welcome to the Online Shopping System");
+        System.out.println("=======================================");
         System.out.print("Enter number of products to add (max 3): ");
         int n = sc.nextInt();
 
@@ -108,7 +109,7 @@ public class OnlineShoppingSystem {
             System.out.println("\nEnter details for Product " + (i + 1));
             System.out.print("Enter ID: ");
             int id = sc.nextInt();
-            sc.nextLine(); // consume newline
+            sc.nextLine();
             System.out.print("Enter Name: ");
             String name = sc.nextLine();
             System.out.print("Enter Price: ");
