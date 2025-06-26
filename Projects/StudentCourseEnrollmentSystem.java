@@ -1,108 +1,130 @@
+import java.util.Scanner;
 
-class Student{
+class Student {
     private String name;
     private Course[] courses;
     private int coursecount;
-   
-    public Student(String name){
+
+    public Student(String name) {
         this.name = name;
         this.courses = new Course[5];
         this.coursecount = 0;
     }
-    public String getName(){
+
+    public String getName() {
         return name;
     }
-    void addcourse(Course c){
-        if(coursecount<5){
+
+    void addcourse(Course c) {
+        if (coursecount < 5) {
             courses[coursecount++] = c;
             c.addstudent(this);
-        }else{
-            System.out.println("Maximum Courses Reached for Student "+name);
+        } else {
+            System.out.println("Maximum Courses Reached for Student " + name);
             System.out.println();
         }
     }
-    void getcourses(){
-        System.out.println(name+"'s Courses :" );
+
+    void getcourses() {
+        System.out.println(name + "'s Courses :");
         System.out.println("---------------------------------------------");
-        for(int i=0;i<coursecount;i++){
-            System.out.println("Code : "+courses[i].getCode()+" || Course : "+courses[i].getCourse());
+        for (int i = 0; i < coursecount; i++) {
+            System.out.println("Code : " + courses[i].getCode() + " || Course : " + courses[i].getCourse());
         }
         System.out.println("---------------------------------------------");
     }
 }
-class Course{
+
+class Course {
     private String code;
     private String title;
     private Student[] students;
     private int count;
 
-    public Course(String code,String course){
+    public Course(String code, String course) {
         this.code = code;
         this.title = course;
         this.students = new Student[5];
         this.count = 0;
     }
-    public String getCode(){
+
+    public String getCode() {
         return code;
     }
-    public String getCourse(){
+
+    public String getCourse() {
         return title;
     }
-    void addstudent(Student s){
-        if(count<5){
+
+    void addstudent(Student s) {
+        if (count < 5) {
             students[count++] = s;
-        }else{
+        } else {
             System.out.println("Maximum Students Reached");
             System.out.println();
         }
     }
-    void getstudentdetails(){
-        System.out.println("Course : "+title+" (Code : "+code+")");
+
+    void getstudentdetails() {
+        System.out.println("Course : " + title + " (Code : " + code + ")");
         System.out.println("Students Enrolled");
         System.out.println("----------------");
-        for(int i=0;i<count;i++){
-            System.out.println("Student "+i+" : "+students[i].getName());
+        for (int i = 0; i < count; i++) {
+            System.out.println("Student " + (i + 1) + " : " + students[i].getName());
         }
         System.out.println("----------------");
     }
 }
+
 public class StudentCourseEnrollmentSystem {
     public static void main(String[] args) {
-        Course c1 = new Course("cs123", "java");
-        Course c2 = new Course("cs234","python");
-        Course c3 = new Course("cs135","DSA");
-        Course c4 = new Course("cs246","SQL");
-        Course c5 = new Course("cs987","c++");
+        Scanner sc = new Scanner(System.in);
 
-        Student s1 = new Student("vishva");
-        Student s2 = new Student("ravi");
-        Student s3 = new Student("sanjai");
+        // Create courses
+        Course[] courses = new Course[5];
+        System.out.println("Enter 5 course details:");
+        for (int i = 0; i < 5; i++) {
+            System.out.print("Enter course code for course " + (i + 1) + ": ");
+            String code = sc.nextLine();
+            System.out.print("Enter course title for course " + (i + 1) + ": ");
+            String title = sc.nextLine();
+            courses[i] = new Course(code, title);
+        }
 
-        s1.addcourse(c1);s1.addcourse(c2);s1.addcourse(c3);s1.addcourse(c4);
-        s2.addcourse(c1);s2.addcourse(c2);s2.addcourse(c3);
-        s3.addcourse(c1);s3.addcourse(c2);s3.addcourse(c3);s3.addcourse(c4);s3.addcourse(c5);
+        // Create students
+        Student[] students = new Student[3];
+        System.out.println("\nEnter names of 3 students:");
+        for (int i = 0; i < 3; i++) {
+            System.out.print("Enter name for student " + (i + 1) + ": ");
+            String name = sc.nextLine();
+            students[i] = new Student(name);
+        }
 
-        s1.getcourses();
-        s2.getcourses();
-        s3.getcourses();
+        // Enroll students in courses
+        System.out.println("\n--- Course Enrollment ---");
+        for (Student student : students) {
+            System.out.println("\nEnroll courses for " + student.getName());
+            for (int i = 0; i < 5; i++) {
+                System.out.print("Do you want to enroll in " + courses[i].getCourse() + "? (yes/no): ");
+                String choice = sc.nextLine();
+                if (choice.equalsIgnoreCase("yes")) {
+                    student.addcourse(courses[i]);
+                }
+            }
+        }
 
-        // c1.addstudent(s1);
-        // c2.addstudent(s2);
-        // c3.addstudent(s3);
+        // Show student course details
+        System.out.println("\n--- Student Course Details ---");
+        for (Student student : students) {
+            student.getcourses();
+        }
 
-        c1.getstudentdetails();
-        c2.getstudentdetails();
-        c3.getstudentdetails();
-        c4.getstudentdetails();
-        c5.getstudentdetails();
+        // Show course student details
+        System.out.println("\n--- Course Student Details ---");
+        for (Course course : courses) {
+            course.getstudentdetails();
+        }
 
+        sc.close();
     }
 }
-//bidirectinal method 
-// Scenario: Student-Course Relationship
-// A Student knows which Courses they are enrolled in.
-
-// A Course knows which Students are enrolled in it.
-
-// 🛡️ Even though they reference each other, data access is always done via methods, not direct field access.
-
