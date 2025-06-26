@@ -1,3 +1,4 @@
+package BankTransactions;
 import java.util.Scanner;
 interface Depositable {
     default double deposit(double amount) { return 0; }

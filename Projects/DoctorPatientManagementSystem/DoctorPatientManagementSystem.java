@@ -1,3 +1,4 @@
+package DoctorPatientManagementSystem;
 import java.util.Scanner;
 
 class Doctor {

@@ -1,3 +1,4 @@
+package StudentCourseEnrollmentSystem;
 import java.util.Scanner;
 
 class Student {

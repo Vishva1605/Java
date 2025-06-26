@@ -1,3 +1,4 @@
+package UniversityDepartmentPortal;
 import java.util.Scanner;
 class University{
     final String name = "XYZ University";

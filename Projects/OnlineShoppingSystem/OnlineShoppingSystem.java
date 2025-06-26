@@ -1,3 +1,4 @@
+package OnlineShoppingSystem;
 import java.util.Scanner;
 
 // E-Commerce Order Management
