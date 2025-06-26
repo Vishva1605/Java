@@ -100,11 +100,11 @@ public class DoctorPatientManagementSystem {
             String pname = sc.nextLine();
             System.out.print("Enter Patient " + (i + 1) + " Age: ");
             int age = sc.nextInt();
-            sc.nextLine(); // consume newline
+            sc.nextLine();
             patients[i] = new Patient(pname, age);
         }
 
-        // Example assignments (can be replaced with input logic if needed)
+        
         doctors[0].addPatient(patients[0]);
         doctors[0].addPatient(patients[1]);
         doctors[0].addPatient(patients[2]);
