@@ -2,7 +2,7 @@
 public class CheckAnagrams {
     public static void main(String[] args) {
         String a = "aabb";
-        String b = "bbaa";
+        String b = "aabb";
         a = a.toLowerCase();
         b = b.toLowerCase();
         StringBuilder B = new StringBuilder(b);
@@ -13,11 +13,11 @@ public class CheckAnagrams {
                 if(a.charAt(i) == B.charAt(j)){
                     str = true;
                     B.deleteCharAt(j);
-                    j--;
+                    // j--;
                     break;
-                }else{
-                    str = false;
-                }
+                 }//else{
+                //     str = false;
+                // }
                 }
                 if(str){
                     c = c+a.charAt(i);
