@@ -1,5 +1,5 @@
 public class Array_dup_Elements {
-    public static void main(string[] args) {
+    public static void main(String[] args) {
         int[] arr = {1,2,2,3,4,4};
         int[] temp = new int[arr.length];
         int k=0;
